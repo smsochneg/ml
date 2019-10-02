@@ -31,3 +31,14 @@ z <- c(1, 3)
 xl <- iris[, 3:5]
 class <- kNN(xl, z)
 points(z[1], z[2], pch = 22, bg = colors[class], asp = 1)
+
+plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
+for(i in seq(1,7,0.1)) {
+	for(j in seq(0,2.5,0.1)) {
+			z <- c(i, j)
+			xl <- iris[, 3:5]
+			k <- 6
+			class <- kNN(xl, z)
+			points(z[1], z[2], pch = 22, col = colors[class], asp = 1)
+	}
+}
