@@ -1,0 +1,76 @@
+
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin18.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> distance <- function(u, v) {
++ 	sqrt(sum((u-v)^2));
++ };
+> 
+> sortObjects <- function(dots, x) {
++ 	l <- dim(dots)[1]
++ 	n <- dim(dots)[2] - 1
++ 	## Создаём матрицу расстояний
++ 	distances <- matrix(NA, l, 2)
++ 	for (i in 1:l)
++ 	{
++ 		distances[i, ] <- c(i, distance(dots[i, 1:n], x))
++ 	}
++ 
++ 	ordered = dots[order(distances[, 2]), ];
++ 
++ 	return (ordered);
++ };
+> 
+> kNN <- function(dots, x, k) {
++ 	orderedDots <- sortObjects(dots, x)
++ 	answer = array(NA, length(k))
++ 	for(i in seq(length(k))){
++ 		names <- table(orderedDots[1:k[i], 3])
++ 		answer[i] <- names(sort(names, decreasing = TRUE)[1])
++ 	}
++ 	return (answer)
++ };
+> 
+> LOO <- function(dots, k) {
++ 	loo <- array(0, k)
++ 	for(i in 1:dim(dots)[1]) {
++ 		ee <- kNN(dots[-i,], c(dots[i,1], dots[i,2]) , seq(k))
++ 		#print(ee)
++ 		loo <- loo + (ee != dots[i,3])
++ 		#if(ee != dots[i,3]) loo <- loo +1
++ 	}
++ 	# print(loo)
++ 	loo <- loo / dim(dots)[1]
++ 	return (loo)
++ };
+> 
+> colors <- c("setosa" = "red", "versicolor" = "green3", "virginica" = "blue")
+> plot(iris[, 3:4], pch = 21, bg = colors[iris$Species], col = colors[iris$Species], asp = 1)
+> 
+> 
+> plot(LOO(iris[, 3:5], 10))
+> 
+> 
+> for(i in 1:10) {
++ 	z <- c(runif(1, 1, 7), runif(1 , -1, 4))
++ 	xl <- iris[, 3:5]
++ 	k <- 10
++ 	class <- kNN(xl, z, k)
++ 	points(z[1], z[2], pch = 22, bg = colors[class], asp = 1)
++ }
+> 
