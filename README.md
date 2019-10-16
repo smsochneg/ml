@@ -12,7 +12,7 @@
 В качестве выборки был взят набор "Ирисы Фишера"  
 Карта классификации выглядит следующим образом: 
 
-![Карта для 1nn](LAB1NN/1map.png)
+<img src="LAB1NN/1map.png" width="400"/>
 
 # **2. Алгоритм классификации "kNN" k-ближайших соседей:**
 
@@ -22,11 +22,11 @@
 
 Оптимальное количество соседей было выбрано по критерию скользящего контроля с исключением объектов по одному (leave-one-out) LOO. Дла каждого объекта обучающей выборки проводится классификация по k ближайшим соседям. Для данной реализации алгоритма график LOO выглядит следующим образом:
 
-![LOO для kNN](LABkNN/loo.png)
+<img src="LABkNN/loo.png" width="400"/>
 
 На графике видно, что LOO минимально при значении k=6. Карта классификации для алгоритма 6NN выглядит следующим образом:
 
-![Карта для knn](LABkNN/1map.png)
+<img src="LABkNN/1map.png" width="400"/>
 
 # **3. Алгоритм классификации "kwNN" k-ближайших взвешенных соседей:**
 
@@ -41,14 +41,13 @@
 
 Для алгоритма 6wNN график LOO выглядит так:
 
-![LOO для kwNN](LABkwNN/loo.png)
+<img src="LABkwNN/loo.png" width="400"/>
 
 Хорошо видно, что LOO для алгоритма kwNN, где k = 6 и q = 0.05 значительно меньше чем для алгоритма kNN.
 
 Карта классификации выглядит следующим образом: 
 
-![Карта для kwnn](LABkwNN/map.png)
-
+<img src="LABkwNN/map.png" width="400"/>
 
 # **4. Алгоритм классификации "метод парзеновского окна":**
 
@@ -62,16 +61,25 @@
 
 ***Карта для прямоугольного ядра:***
 ![rect](http://www.machinelearning.ru/mimetex/?K_5(r)=%5CPi(r)=%5Cfrac%7B1%7D%7B2%7D%7B%5B%7D%7B%7C%7Dr%7B%7C%7D%3C=1%7B%5D%7D)
-![Карта для прямоугольного ядра](parsen/rectmap.png)
+
+<img src="parsen/rectmap.png" width="400"/>
+
 ***Карта для треугольного ядра:***
 ![triang](http://www.machinelearning.ru/mimetex/?K_3(r)=T(r)=(1-%7B%7C%7Dr%7B%7C%7D)%7B%5B%7D%7B%7C%7Dr%7B%7C%7D%3C=1%7B%5D%7D)
-![Карта для треугольного ядра](parsen/triangmap.png)
+
+<img src="parsen/triangmap.png" width="400"/>
+
 ***Карта для квартичного ядра:***
 ![quart](http://www.machinelearning.ru/mimetex/?K_2(r)=Q(r)=%5Cfrac%7B15%7D%7B16%7D(1-r%5E2)%5E2%7B%5B%7D%7B%7C%7Dr%7B%7C%7D%3C=1%7B%5D%7D)
-![Карта для квартичного ядра](parsen/quadrmap.png)
+
+<img src="parsen/quadrmap.png" width="400"/>
+
 ***Карта для ядра Епанечникова:***
 ![epan](http://www.machinelearning.ru/mimetex/?K_1(r)=E(r)=%5Cfrac%7B3%7D%7B4%7D(1-r%5E2)%7B%5B%7D%7B%7C%7Dr%7B%7C%7D%3C=1%7B%5D%7D)
-![Карта для ядра Епанечникова](parsen/epanmap.png)
+
+<img src="parsen/epanmap.png" width="400"/>
+
 ***Карта для Гауссовского ядра:***
 ![gaus](http://www.machinelearning.ru/mimetex/?K_4(r)=G(r)=(2%5Cpi)%5E%7B(-%5Cfrac%7B1%7D%7B2%7D)%7Dexp(-%5Cfrac%7B1%7D%7B2%7Dr%5E2))
-![Карта для Гауссовского ядра](parsen/triangmap.png)
+
+<img src="parsen/gausmap.png" width="400"/>
