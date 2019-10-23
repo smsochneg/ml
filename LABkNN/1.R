@@ -68,3 +68,20 @@ for(i in seq(1,7,0.1)) {
 			points(z[1], z[2], pch = 22, col = colors[class], asp = 1)
 	}
 }
+
+
+proof <- function() {
+	vyborka <- data.frame(
+		x=c(2,2,1.5,0.5,1),
+		y=c(3,2.5,2.5,0.5,0.5),
+		Species=c("setosa","setosa","setosa","versicolor","versicolor")
+	)
+
+	show <- c(1, 1)
+
+	plot(vyborka[,1:2], pch = 21, bg = colors[vyborka$Species], col = colors[vyborka$Species], asp = 1)
+	class <- kNN(vyborka, show, 5)
+	points(show[1], show[2], pch = 22, col = colors[class], asp = 1)
+}
+
+proof()

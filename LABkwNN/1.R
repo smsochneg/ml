@@ -19,14 +19,13 @@ sortObjects <- function(dots, x) {
 
 kwNN <- function(dots, x, k, q=0.8) {
 	n <- dim(dots)[2] - 1
-	orderedDots <- sortObjects(xl, x)
+	orderedDots <- sortObjects(dots, x)
 	names <- table(orderedDots[1:k, 3])
 	## print(orderedDots[2,3])
 	rank <- rep(0, length(names))
 	for(i in 1:k) {
 		rank[orderedDots[i,3]] <- rank[orderedDots[i, 3]] + q^i
 	}
-	# print(rank)
 	answer <- names[which.max(rank)]
 	return (names(answer))
 };
@@ -69,3 +68,19 @@ text(5, 0.05, labels=ptext)
 # 			points(z[1], z[2], pch = 22, col = colors[class], asp = 1)
 # 	}
 # }
+
+proof <- function() {
+	vyborka <- data.frame(
+		x=c(2,2,1.5,0.5,1),
+		y=c(3,2.5,2.5,0.5,0.5),
+		Species=c("setosa","setosa","setosa","versicolor","versicolor")
+	)
+
+	show <- c(1, 1)
+
+	plot(vyborka[,1:2], pch = 21, bg = colors[vyborka$Species], col = colors[vyborka$Species], asp = 1)
+	class <- kwNN(vyborka, show, 5)
+	points(show[1], show[2], pch = 22, col = colors[class], asp = 1)
+}
+
+proof()
